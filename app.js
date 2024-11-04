@@ -4,9 +4,9 @@ const getCharacter = async (url) =>{
     try {
         const response = await fetch(url)
         const data = await response.json()
-        allCharacters = data.results; // Guardamos todos los personajes
+        allCharacters = data.results; 
         
-        // Limpiamos el main antes de mostrar los personajes
+        
         document.querySelector('main').innerHTML = '';
         
         data.results.forEach(character => {
@@ -64,27 +64,27 @@ function runs (data){
         makecard(character)
     });
 }
-// Función para filtrar personajes
+
 function filterCharacters(searchTerm) {
-    // Si no hay término de búsqueda, mostrar todos los personajes
+   
     if (!searchTerm) {
         document.querySelector('main').innerHTML = '';
         allCharacters.forEach(character => makecard(character));
         return;
     }
 
-    // Filtrar los personajes que coincidan con la búsqueda
+   
     const filtered = allCharacters.filter(character => 
         character.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Limpiar el contenedor y mostrar los resultados
+   
     document.querySelector('main').innerHTML = '';
 
     filtered.forEach(character => makecard(character));
 }
 
-// Agregar el evento input al buscador
+
 document.getElementById('site-search').addEventListener('input', (show) => {
     filterCharacters(show.target.value);
 });
